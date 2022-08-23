@@ -1,0 +1,61 @@
+POST https://labook11.herokuapp.com/user/signup
+Content-Type: application/json
+
+
+{
+   
+   "name": "José",  
+   "email": "josé@gmail.com" ,
+   "password": "123456111"
+
+}
+### 
+# @name login
+POST https://labook11.herokuapp.com/user/login
+Content-Type: application/json
+
+
+{
+    "email": "Luiz@gmail.com",
+   "password": "SenhaSuperSegura"
+}
+
+
+###
+@token = {{login.response.body.token}}
+POST https://labook11.herokuapp.com/create/post
+Authorization: {{token}}
+Content-Type: application/json
+
+{   
+   
+   "photo":"https://www.google.com/imgres?imgurl=htt",
+   "description":"Ruas de Fogo",
+   "type":"normal"
+   
+
+}
+###
+@token = {{login.response.body.token}}
+GET http://localhost:3003/posts/091fb526-52c5-4ae1-9695-80a53b410bbf
+Authorization: {{token}}
+
+###
+@token = {{login.response.body.token}}
+POST http://localhost:3003/users/friends
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+   "id":"241eb149-7d5b-4c9f-93b9-18afde4dd153"
+}
+
+
+
+###
+@token = {{login.response.body.token}}
+DELETE  http://localhost:3003/delete/241eb149-7d5b-4c9f-93b9-18afde4dd153
+Authorization: {{token}}
+
+
+
